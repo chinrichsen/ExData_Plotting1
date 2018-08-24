@@ -22,3 +22,5 @@ png(file="plot1.png",width=480,height=480,units="px")
 hist(w$Global_active_power,col="red",xlab="Global Active Power (kilowatts)",main="Global Active Power")
 #Turn off the device
 dev.off()
+#Sets the local system into the old
+Sys.setlocale("LC_TIME",old.system)
