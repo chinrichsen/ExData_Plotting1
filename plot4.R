@@ -21,15 +21,24 @@ w$Sub_metering_2 <- as.numeric(levels(w$Sub_metering_2))[w$Sub_metering_2]
 w$Sub_metering_3 <- as.numeric(levels(w$Sub_metering_3))[w$Sub_metering_3]
 #Save the local system (in case is not an english environment), for dates in english purposes
 old.system <- Sys.getlocale("LC_TIME")
+#Sets the local system into "English", for dates in english purposes
 Sys.setlocale("LC_TIME", "English")
+#Creates the png file, with required specifications
 png(file="plot4.png",width=480,height=480,units="px")
+#Set the space for the 4 plots (2 rows and 2 columns)
 par(mfrow=c(2,2))
+#Creates the required plot
 plot(w$Date,w$Global_active_power,type="l",xlab="",ylab="Global Active Power",col="black")
+#Creates the required plot
 plot(w$Date,w$Voltage,type="l",xlab="datetime",ylab="Global Active Power",col="black")
+#Creates the required plot, and then add all the series with their specifications, and finally add the legend
 plot(w$Date,w$Sub_metering_1,type="l",xlab="",ylab="Energy sub metering",col="black")
 lines(w$Date,w$Sub_metering_2,type="l",col="red")
 lines(w$Date,w$Sub_metering_3,type="l",col="blue")
 legend("topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),col=c("black","red","blue"),lty=1, bty="n")
+#Creates the required plot
 plot(w$Date,w$Global_reactive_power,type="l",xlab="datetime",ylab="Global_reactive_power",col="black")
+#Turn off the device
 dev.off()
+#Set the local system into the old
 Sys.setlocale("LC_TIME",old.system)
