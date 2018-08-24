@@ -16,8 +16,13 @@ w <- subset(y,y$Date$year==107 & y$Date$mon==1 & (y$Date$mday==1 |y$Date$mday==2
 w$Global_active_power <- as.numeric(levels(w$Global_active_power))[w$Global_active_power]
 #Save the local system (in case is not an english environment), for dates in english purposes
 old.system <- Sys.getlocale("LC_TIME")
+#Sets the local system into "English", for dates in english purposes
 Sys.setlocale("LC_TIME", "English")
+#Creates the png file, with required specifications
 png(file="plot2.png",width=480,height=480,units="px")
+#Creates the required plot
 plot(w$Date, w$Global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)")
+#Turn off the device
 dev.off()
+#Set the local system into the old
 Sys.setlocale("LC_TIME",old.system)
